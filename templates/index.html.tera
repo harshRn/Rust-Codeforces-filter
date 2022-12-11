@@ -1,0 +1,41 @@
+{% import "macros" as m %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Codeforces Filter</title>
+    <link rel="stylesheet" href="/chota.min.css">
+    <style>
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form action="/" method="post" enctype="multipart/form-data">
+        <fieldset>
+        <legend><h1>Query</h1></legend>
+          <div class="row">
+            <div class="col">
+                {{ m::input(label="Link to Page", type="text", name="query.link") }}
+            </div>
+             <div class="col">
+                {{ m::input(label="Lower Limit", type="text", name="query.ll") }}
+            </div>
+             <div class="col">
+                {{ m::input(label="Upper Limit", type="text", name="query.ul") }}
+            </div>
+          </div>
+
+        </fieldset>
+        <br />
+        <input type="submit" value="Submit" class="is-full-width" />
+      </form>
+    </div>
+  </body>
+</html>

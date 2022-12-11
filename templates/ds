@@ -1,0 +1,9 @@
+{% for problem in results %}
+            <tr>
+                <td>{{ problem.code }}</td>
+                <td>{{ problem.name }}</td>
+                <td>{{ problem.rating }}</td>
+                <td><a href="{{ '%s'%problem.link|urlencode }}" >{{ problem.link }}</a></td>
+                <td><input type="button" value="visit" onclick="newDoc('{{ problem.link }}')"></td>
+            </tr>
+        {% endfor %}
