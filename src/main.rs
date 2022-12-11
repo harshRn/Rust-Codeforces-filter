@@ -49,8 +49,6 @@ fn submit<'r>(form: Form<Contextual<'r, Submit<'r>>>) -> (Status, Template) {
         Some(ref submission) => {
             let fetched: Arc<Mutex<Vec<Vec<String>>>> = Arc::new(Mutex::new(Vec::new()));
             let limits = process(submission, Arc::clone(&fetched));
-            // println!("{:#?}", &form.context);
-            // Template::render("success", &form.context)
             let results: HashMap<String, Problem> = post_processing(fetched, limits[0], limits[1]);
             Template::render("success", context!{results})
         }
@@ -67,7 +65,6 @@ fn post_processing(fetched: Arc<Mutex<Vec<Vec<String>>>>, ll: u32, ul: u32) -> H
     let mut counter: u32 = 0;
     let mut results: HashMap<String, Problem> = HashMap::new();
     for item in &*stored {
-        // println!("{:#?}", item);
         let anchor_selector = Selector::parse("a").unwrap();
         let span_selector   = Selector::parse("span").unwrap();
 
